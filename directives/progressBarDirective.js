@@ -23,7 +23,7 @@
 
                 //watch the progress input so that the css can be modified for different values
                 scope.$watch('progress', function(newVal,oldVal){
-                    if(newVal > 100){
+                    if(newVal > limit){
                         progressBarElem.find('.progress-bar').addClass('progress-bar-danger');
                     }else if(progressBarElem.find('.progress-bar').hasClass('progress-bar-danger')){
                         progressBarElem.find('.progress-bar').removeClass('progress-bar-danger');
