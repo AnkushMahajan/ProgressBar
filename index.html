@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="progressBarApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Progress Bar Demo</title>
+    <link rel="stylesheet" type="text/css" href="styles/progressBarStyles.css"/>
+    <!--<link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css"/>-->
+</head>
+<body ng-controller="progressBarController as progressCtrl">
+<div class="universalMargin">
+    <h1>Progress Bars Demo</h1>
+
+    <!--Directive for displaying and updating the progress bars-->
+    <progress-bar id="progress1" progress="progressCtrl.progressPercent.progress1"></progress-bar>
+    <progress-bar id="progress2" progress="progressCtrl.progressPercent.progress2"></progress-bar>
+    <progress-bar id="progress3" progress="progressCtrl.progressPercent.progress3"></progress-bar>
+
+    <select name="progressBarSelect" id="progressBarSelect"
+            ng-options="option.name for option in progressCtrl.progressBars track by option.id"
+            ng-model="progressCtrl.selectedOption"></select>
+
+    <button class="button" ng-repeat="button in progressCtrl.buttons" ng-click="progressCtrl.update(button)">
+        {{button}}
+    </button>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+<script type="text/javascript" src="progressBarApp.js"></script>
+<script type="text/javascript" src="controllers/progressBarController.js"></script>
+<script type="text/javascript" src="directives/progressBarDirective.js"></script>
+</body>
+</html>

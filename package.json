@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "karma": "latest",
+    "karma-jasmine": "latest",
+    "angular-mocks": "1.5.0",
+    "http-server": "0.9.0"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^0.2.3"
+  }
+}
