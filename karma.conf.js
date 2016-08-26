@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../Progress Bar Test',
+    basePath: '',
 
 
     // frameworks to use
@@ -15,13 +15,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        '../Progress Bar Test/node_modules/jquery/dist/jquery.min.js',
-        '../Progress Bar Test/node_modules/angular/angular.min.js',
-        '../Progress Bar Test/node_modules/angular-mocks/angular-mocks.js',
+        'node_modules/angular/angular.min.js',
+        'node_modules/angular-mocks/angular-mocks.js',
         'progressBarApp.js',
-        '../Progress Bar Test/controllers/*.js',
-        '../Progress Bar Test/directives/*.js',
-        '../Progress Bar Test/tests/*.js'
+        'controllers/*.js',
+        'directives/*.js',
+        'tests/*.js'
     ],
 
 

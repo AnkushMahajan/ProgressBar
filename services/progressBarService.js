@@ -11,8 +11,11 @@ progressBarMainModule.factory('progressBarService',['$http', '$q',  function($ht
     return {
 
         getProgressInitial : function(){
+
+            //returning a $q implemenation constructor of promise wrapper provided by angular
             return $q(function (resolve, reject) {
 
+                //$http request for getting the public exposed endpoint data, could have been jsonp if for cors request
                 $http.get('http://pb-api.herokuapp.com/bars').success(function(data){
                     
                     resolve(data);

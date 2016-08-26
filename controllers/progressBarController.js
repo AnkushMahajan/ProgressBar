@@ -1,5 +1,5 @@
 /**
- * Created by Ankush on 3/29/2016.
+ * Created by Ankush on 8/26/2016.
  */
 
     //instantiate module for angular app, this acts as a container for DI{ dependency injection} of controllers and service registered with it by the provider
@@ -8,6 +8,7 @@
     //Controller constructor to register controller with the module
     progressBarMainModule.controller("progressBarController",['progressBarService', function (progressBarService) {
 
+        'use strict';
         //set scope created by the controller to self so that we can access it in other contexts
         var self = this;
         
@@ -24,11 +25,16 @@
                 }
             });
 
+            //Consume limit provided by the API to limit progress for the bars
+            self.limit = data.limit? data.limit:100;
+
+            //default option selected on init
             self.selectedOption =  self.progressBars[0];
 
             //mapping buttons from the api result
             self.buttons =data.buttons;
 
+            //this function is responsible for updating the selected progress bar value
             self.update = function(button){
                 var oldVal = self.progressBars[self.selectedOption.index].progress;
                 var newVal = oldVal+button;
