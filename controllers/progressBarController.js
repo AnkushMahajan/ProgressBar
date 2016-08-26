@@ -6,43 +6,42 @@
     var progressBarMainModule = angular.module("progressBarApp");
 
     //Controller constructor to register controller with the module
-    progressBarMainModule.controller("progressBarController", function () {
+    progressBarMainModule.controller("progressBarController",['progressBarService', function (progressBarService) {
 
         //set scope created by the controller to self so that we can access it in other contexts
         var self = this;
         
-        self.progressPercent = {
-            "progress1":0,
-            "progress2": 0,
-            "progress3": 0
-        };
+        //get data from the endPoint
+        progressBarService.getProgressInitial().then(function (data) {
 
-        self.progressBars = [
-            {
-                id: "progress1",
-                name: "progress1"
-            },
-            {
-                id: "progress2",
-                name: "progress2"
-            },
-            {
-                id: "progress3",
-                name: "progress3"
-            }
-        ];
+            //configure the bars returned by the api
+            self.progressBars = data.bars.map(function(item, index){
+                return {
+                    id: 'progress'+(index+1),
+                    name: 'progress'+(index+1),
+                    index: index,
+                    progress: item
+                }
+            });
 
-        self.selectedOption =  {id: "progress1", name: "progress1"};
+            self.selectedOption =  self.progressBars[0];
 
-        self.buttons =[-25, -10, +10, +25];
+            //mapping buttons from the api result
+            self.buttons =data.buttons;
 
-        self.update = function(button){
-            var oldVal = self.progressPercent[self.selectedOption.name];
-            var newVal = oldVal+button;
-            if(newVal >=0){
-                self.progressPercent[self.selectedOption.name] = newVal;
+            self.update = function(button){
+                var oldVal = self.progressBars[self.selectedOption.index].progress;
+                var newVal = oldVal+button;
+                if(newVal >=0){
+                    self.progressBars[self.selectedOption.index].progress = newVal;
+                }
+
             }
 
-        }
-    });
+        }).catch(function(error){
+            console.log(error);
+        })
+        
+
+    }]);
 

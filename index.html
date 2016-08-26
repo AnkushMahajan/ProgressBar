@@ -12,9 +12,10 @@
     <h1>Progress Bars Demo</h1>
 
     <!--Directive for displaying and updating the progress bars-->
-    <progress-bar id="progress1" progress="progressCtrl.progressPercent.progress1"></progress-bar>
-    <progress-bar id="progress2" progress="progressCtrl.progressPercent.progress2"></progress-bar>
-    <progress-bar id="progress3" progress="progressCtrl.progressPercent.progress3"></progress-bar>
+    <div ng-repeat="item in progressCtrl.progressBars">
+        <progress-bar  progress="item.progress"></progress-bar>
+    </div>
+
 
     <select name="progressBarSelect" id="progressBarSelect"
             ng-options="option.name for option in progressCtrl.progressBars track by option.id"
@@ -29,6 +30,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
 <script type="text/javascript" src="progressBarApp.js"></script>
 <script type="text/javascript" src="controllers/progressBarController.js"></script>
+<script type="text/javascript" src="services/progressBarService.js"></script>
 <script type="text/javascript" src="directives/progressBarDirective.js"></script>
 </body>
 </html>

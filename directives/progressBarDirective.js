@@ -12,7 +12,8 @@
             replace: true,
             templateUrl: "../templates/progressBarTemplate.html",
             scope:{
-                progress:"=progress"
+                progress:"=progress",
+                limit:'=limit'
             },
             link: function(scope, elem, attrs){
                 scope.id = attrs.id;
