@@ -21,12 +21,14 @@
                     id: 'progress'+(index+1),
                     name: 'progress'+(index+1),
                     index: index,
-                    progress: item
+                    progress: Math.ceil(data.limit/item)
                 }
             });
 
-            //Consume limit provided by the API to limit progress for the bars
-            self.limit = data.limit? data.limit:100;
+            //Consume limit provided by the API to limit progress for the bars, this is the equivalent of 100%
+            self.limit = data.limit;
+
+            self.progressIncrementer = 100/self.limit;
 
             //default option selected on init
             self.selectedOption =  self.progressBars[0];
@@ -36,8 +38,15 @@
 
             //this function is responsible for updating the selected progress bar value
             self.update = function(button){
+
+                /**
+                *   before updating the progress val get the old val and add to it the new progress %
+                *   formula should be if limit*x = 100; x = 100/limit ; new value = old value + (100/limit)* button
+                */
+                
+
                 var oldVal = self.progressBars[self.selectedOption.index].progress;
-                var newVal = oldVal+button;
+                var newVal = oldVal + Math.ceil(self.progressIncrementer * button);
                 if(newVal >=0){
                     self.progressBars[self.selectedOption.index].progress = newVal;
                 }

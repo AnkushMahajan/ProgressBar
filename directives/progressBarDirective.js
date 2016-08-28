@@ -12,8 +12,7 @@
             replace: true,
             templateUrl: "../templates/progressBarTemplate.html",
             scope:{
-                progress:"=progress",
-                limit:'=limit'
+                progress:"=progress"
             },
             link: function(scope, elem, attrs){
                 scope.id = attrs.id;
@@ -23,7 +22,7 @@
 
                 //watch the progress input so that the css can be modified for different values
                 scope.$watch('progress', function(newVal,oldVal){
-                    if(newVal > scope.limit){
+                    if(newVal > 100){
                         progressBarElem.find('.progress-bar').addClass('progress-bar-danger');
                     }else if(progressBarElem.find('.progress-bar').hasClass('progress-bar-danger')){
                         progressBarElem.find('.progress-bar').removeClass('progress-bar-danger');
