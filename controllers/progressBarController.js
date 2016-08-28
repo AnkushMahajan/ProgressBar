@@ -41,7 +41,7 @@
 
                 /**
                 *   before updating the progress val get the old val and add to it the new progress %
-                *   formula should be if limit*x = 100; x = 100/limit ; new value = old value + (100/limit)* button
+                *   formula should be if limit*x = 100; x = 100/limit ; new value = old value + x* button
                 */
                 
 
