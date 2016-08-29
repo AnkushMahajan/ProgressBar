@@ -8,7 +8,7 @@ The progress Bars are configured by the data received from the end point and cha
 
 Limit if returned by the API would determine when the background color on the progress change to red i.e value > limit else limit is set to default
 
-A simple Http Server has been added in the package json file , so just np imstall would get you a local file server
+A simple Http Server has been added in the package json file , so just npm install would get you a local file server
 
 Do a npm install http-server -g to install it globally
 
